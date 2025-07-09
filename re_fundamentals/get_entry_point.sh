@@ -18,8 +18,7 @@ if ! file "$file_name" | grep -q 'ELF'; then
 fi
 magic_number=$(readelf -h $file_name | grep 'Magic:' | cut -d: -f2 | xargs)
 class=$(readelf -h $file_name | grep 'Class:' | cut -d: -f2 | xargs)
-byte_order=$(readelf -h $file_name | grep 'Data:' | cut -d: -f2 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//'
-)
+byte_order=$(readelf -h task0 | grep 'Data:' | cut -d, -f2 | sed 's/^[[:space:]]*//')
 entry_point_address=$(readelf -h $file_name | grep 'Entry point address:' | cut -d: -f2 | xargs)
 
 
